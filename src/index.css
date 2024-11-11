@@ -31,8 +31,6 @@ body {
   gap: 2.4rem;
 }
 
-/* *************** */
-
 .header {
   align-self: stretch;
 }
@@ -54,8 +52,6 @@ body {
 
 .header h1::before,
 .header h1::after {
-  display: block;
-  content: '';
   height: 3px;
   width: 12rem;
   background-color: #edc84b;
@@ -70,8 +66,6 @@ body {
 .header h1::after {
   right: 0;
 }
-
-/* *************** */
 
 .menu {
   display: flex;
@@ -153,11 +147,3 @@ body {
 .btn:hover {
   background-color: #e9bb24;
 }
-
-/*
-SPACING SYSTEM (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 40 / 48 / 64 / 80 / 96 / 128
-
-FONT SIZE SYSTEM (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
-*/
