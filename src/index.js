@@ -42,85 +42,99 @@ const pizzas = [
 
 function App () {
     return (
-        <div className="container">
+        <main className="container">
             <Header />
             <Tagline />
             <Menu />
             <Footer />
-        </div>
+        </main>
     );
 }
 
 function Header () {
     return (
-        <h1 style={{color: "orange", fontSize: "48px", textTransform: "uppercase"}}>
-            Yong Keong's Pizza Co.
-        </h1>
+        <header className='header'>
+            <h1 style={{color: "orange", fontSize: "48px", textTransform: "uppercase"}}>
+                Yong Keong's Pizza Co.
+            </h1>
+        </header>
     );
 }
 
 function Pizza ({name, ingredients, price, image}) {
     return (
-        <div className="pizzas">
+        <article className="pizzas">
             <img src={image} alt={name} />
             <h1>{name}</h1>
             <p>{ingredients}</p>
             <p>{price}</p>
-        </div>
+        </article>
     );
 }
 
 function Menu() {
     return (
-        <div>
-            <div className="menu">
+        <main className='container'>
+            <article className="menu">
                 <h2>Our Menu</h2>
                 <Pizza />
-            </div>
+            </article>
 
-            <div className="pizza">
+            <article className="pizza">
                 {pizzas.map(pizza => (
                     <Pizza key={pizza.id} {...pizza} />
                 ))}
-            </div>
-        </div>
+            </article>
+        </main>
     )
 }
 
 function Tagline() {
     const date = new Date();
     const hour = date.getHours();
-    return (
-        <div>            
-            <header className="header">
-                {hour >= 10 && hour <= 22 ? "Authentic Italian Cuisine" : ""}
-            </header>
-        </div>
+    return (    
+        <article className="container">    
+        <p>
+            {hour >= 10 && hour < 22 && "Authentic Italian Cuisine"}
+        </p>
+        </article>
     );
 }
 
 function Button(props) {
     return <button className="btn" onClick={props.onClick}>Order Now</button>;
 }
+
 function Alert() {
     function handleClick() {
-        alert("Sorry, we're closed.");
+        alert("Sorry, we're closed");
     }
     return <Button onClick={handleClick} />;
 }
 
-function Footer() {
+function Order() {
     const date = new Date();
     const hour = date.getHours();
     return (
-        <div>            
-            <footer className="footer">
-                {hour >= 10 && hour <= 22 ? "We're currently open." : "Sorry we're closed."}
-            </footer>
-            <div>
-                {hour >= 10 && hour <= 22 ? <Button/> : <Alert />}
-            </div>
-        </div>
+        <footer className="footer">
+            {hour >= 10 && hour < 22 ? (
+            <>
+                <p>We're currently open</p>
+                <Button />
+            </>
+            ): (
+            <>
+                <p>Sorry, we're closed</p>
+                <Alert />
+                </>
+            )}
+        </footer>
+    );
+}
+
+function Footer() {
+    return (
+        <Order />
     );
 }
 
