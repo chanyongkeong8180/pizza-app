@@ -74,18 +74,18 @@ function Pizza ({name, ingredients, price, image}) {
 
 function Menu() {
     return (
-        <main className='container'>
-            <article className="menu">
+        <article className='menu'>
+            <section className="pizzas">
                 <h2>Our Menu</h2>
                 <Pizza />
-            </article>
+            </section>
 
-            <article className="pizza">
+            <section className="pizza">
                 {pizzas.map(pizza => (
                     <Pizza key={pizza.id} {...pizza} />
                 ))}
-            </article>
-        </main>
+            </section>
+        </article>
     )
 }
 
